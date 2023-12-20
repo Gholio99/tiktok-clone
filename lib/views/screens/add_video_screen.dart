@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tiktok_tutorial/constants.dart';
 import 'package:tiktok_tutorial/views/screens/confirm_screen.dart';
 
+import '../widgets/bottom_navigation_bar.dart';
+
 class AddVideoScreen extends StatelessWidget {
   const AddVideoScreen({Key? key}) : super(key: key);
 
@@ -100,6 +102,7 @@ class AddVideoScreen extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

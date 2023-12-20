@@ -4,6 +4,8 @@ import 'package:tiktok_tutorial/constants.dart';
 import 'package:tiktok_tutorial/controllers/comment_controller.dart';
 import 'package:timeago/timeago.dart' as tago;
 
+import '../widgets/bottom_navigation_bar.dart';
+
 class CommentScreen extends StatelessWidget {
   final String id;
   CommentScreen({

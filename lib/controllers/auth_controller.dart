@@ -11,7 +11,8 @@ import 'package:tiktok_tutorial/views/screens/home_screen.dart';
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   late Rx<User?> _user;
-  late Rx<File?> _pickedImage;
+  late Rx<File?> _pickedImage = Rx<File?>(null); // Initialize with null or default image
+
 
   File? get profilePhoto => _pickedImage.value;
   User get user => _user.value!;
@@ -32,16 +33,29 @@ class AuthController extends GetxController {
     }
   }
 
-  void pickImage() async {
+  /* void pickImage() async {
     final pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       Get.snackbar('Profile Picture',
           'You have successfully selected your profile picture!');
     }
+    
     _pickedImage = Rx<File?>(File(pickedImage!.path));
   }
+ */
+void pickImage() async {
+  final pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
 
+  if (pickedImage != null) {
+    Get.snackbar('Profile Picture', 'You have successfully selected your profile picture!');
+    _pickedImage.value = File(pickedImage.path);
+  } else {
+    // If the user didn't upload a picture, set a default file path or leave it null
+    _pickedImage.value = File("default_image_path");
+    Get.snackbar('Info', 'Using default profile picture.');
+  }
+}
   // upload to firebase storage
   Future<String> _uploadToStorage(File image) async {
     Reference ref = firebaseStorage
@@ -61,14 +75,20 @@ class AuthController extends GetxController {
     try {
       if (username.isNotEmpty &&
           email.isNotEmpty &&
-          password.isNotEmpty &&
-          image != null) {
+          password.isNotEmpty ) {
         // save out user to our ath and firebase firestore
         UserCredential cred = await firebaseAuth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
-        String downloadUrl = await _uploadToStorage(image);
+        String downloadUrl = "";
+         if (image != null) {
+        downloadUrl = await _uploadToStorage(image);
+      } else {
+        // Use a default downloadUrl or set it to the default image path.
+        downloadUrl = "https://img.freepik.com/vecteurs-premium/figure-noire-blanche-chic-silhouette_772298-7786.jpg?w=2000";
+      }
+
         model.User user = model.User(
           name: username,
           email: email,

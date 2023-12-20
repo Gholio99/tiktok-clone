@@ -7,6 +7,8 @@ import 'package:tiktok_tutorial/views/widgets/video_player_iten.dart';
 import 'package:video_player/video_player.dart';
 import 'package:get/get.dart';
 
+import '../widgets/bottom_navigation_bar.dart';
+
 class VideoScreen extends StatelessWidget {
   VideoScreen({Key? key}) : super(key: key);
 

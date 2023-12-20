@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_tutorial/constants.dart';
 import 'package:tiktok_tutorial/views/widgets/custom_icon.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class CustomBottomNavigationBar extends StatefulWidget {
+  const CustomBottomNavigationBar({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CustomBottomNavigationBar> createState() =>
+      _CustomBottomNavigationBarState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CustomBottomNavigationBarState
+    extends State<CustomBottomNavigationBar> {
   int pageIdx = 0;
 
   @override

@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:tiktok_tutorial/models/user.dart';
 import 'package:tiktok_tutorial/views/screens/profile_screen.dart';
 
+import '../widgets/bottom_navigation_bar.dart';
+
 class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);
 

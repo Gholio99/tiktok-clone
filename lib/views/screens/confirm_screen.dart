@@ -5,6 +5,8 @@ import 'package:tiktok_tutorial/controllers/upload_video_controller.dart';
 import 'package:tiktok_tutorial/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 
+import '../widgets/bottom_navigation_bar.dart';
+
 class ConfirmScreen extends StatefulWidget {
   final File videoFile;
   final String videoPath;

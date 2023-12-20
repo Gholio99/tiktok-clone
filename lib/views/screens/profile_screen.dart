@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:tiktok_tutorial/constants.dart';
 import 'package:tiktok_tutorial/controllers/profile_controller.dart';
+import '../widgets/bottom_navigation_bar.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -223,4 +224,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
         });
   }
+  
 }

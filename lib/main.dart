@@ -1,3 +1,4 @@
+import 'package:firebase_app_check/firebase_app_check.dart'; // Importez la bibliothèque Firebase App Check
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,9 +9,17 @@ import 'package:tiktok_tutorial/views/screens/auth/signup_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) {
-    Get.put(AuthController());
-  });
+  
+  // Initialisez Firebase Core
+  await Firebase.initializeApp();
+
+  // Initialisez Firebase App Check après Firebase Core
+  await FirebaseAppCheck.instance.activate();
+
+  // Initialisez le contrôleur Auth
+  Get.put(AuthController());
+
+  // Lancez l'application
   runApp(const MyApp());
 }
 
